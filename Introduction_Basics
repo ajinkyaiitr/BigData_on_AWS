@@ -7,3 +7,56 @@ Benefits of Cloud:
 4)Secure Storage Management
 5)24 * 7 support
 
+Benefits of Bigdata on AWS:
+1)Broad range of services to help you build and deploy big data analytics
+applications quickly and easily
+2)Fast access to flexible and low cost IT resources
+3)Rapidly scale any bigdata application
+4)With AWS no investments of time and money to build infrastructure
+
+--> AWS provides ability to build any big data analytics application,support any workload
+regardless of volume,velocity and variety of data
+-->Bigdata analytics is the process of examining large and verified datasets  to uncover the hidden
+patterns,relations and market trends.
+-->Helps organization to make critical business decisions with ease.
+
+Bigdata Analytics Framework:
+
+1)Amazon EMR(Hadoop and Spark)
+2)Interactive Query Service(Amazon Athena)
+3)Elastic search(Amazon Elastic search service)
+
+Streaming Data 
+---When the live data is captured  from various sources and
+start analysing them  while the data is still travelling from 
+source to the target
+We use Amazon Kinesis for loading streaming data
+--Amazon Kinesis Firehose
+--Amazon Kinesis Analytics
+--Amazon Kinesis Streams
+
+BIGDATA STORAGES AND DATABASES:
+===============================
+
+1)Object Storage - Amazon S3
+2)Graph Databases - Amazon Dynamo DB for TITAN
+3)NoSQL - Amazon Dynamo DB
+4)Hbase on AMazon EMR
+5)MySQL - Amazon Aurora
+6)AMazon Relational Databases
+
+DATA WAREHOUSING
+================
+For storing huge volumes of historical data,you always require data warehouse
+--A peta byte  scale data warehousing solution(Redshift)
+--Its about creating a data warehouse without bothering about the huge servers and huge
+databases
+
+BUSINESS INTELLIGENCE
+=====================
+Defn - Extracting the data from various sources,transforming the data,visualizing the data and then loading it into various other sources
+
+
+--
+
+
