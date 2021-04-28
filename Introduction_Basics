@@ -55,6 +55,36 @@ databases
 BUSINESS INTELLIGENCE
 =====================
 Defn - Extracting the data from various sources,transforming the data,visualizing the data and then loading it into various other sources
+Amazon Quicksight provides a fast cloud  powered BI solution for the 1/10 th the cost of traditional setup of the BI tools
+1)It allows you to connect to the various AWS data services and upload the data and the files to the quicksight solutions
+2)Provides in memory calculation engine
+3)Provides a UI where you can visualize the data and do the trend analysis
+
+ARTIFICIAL INTELLIGENCE
+=====================
+1)AWS provides cloud native Machine Learning and Deep Learning techniques to address broad set of use cases and various needs
+i)Amazon Lex
+ii)Amazon Polly
+iii)Amazon Rekognition
+iv)Amazon Machine Learning
+
+COMPUTE
+=====================
+For doing any kind of analysis,you would require a compute application
+
+Compute is a platform where computations will be done
+1)Serverless Compute(AWS Lambda)
+2)Compute Services Instance Types(Amazon EC2 Instances)
+
+
+Data Movement
+================
+Movement of data into the cloud and around the cloud
+1)AWS Direct Connectivity- AWS Direct Connect
+2)Database Migration - AWS Snowball
+3)Hybrid Cloud Storage - AWS Storage Gateway
+
+
 
 
 --
