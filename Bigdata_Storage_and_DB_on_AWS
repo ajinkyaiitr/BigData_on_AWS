@@ -1,0 +1,11 @@
+BigData Storage can be of 2 types:
+1)Object Storage
+- For storing immutable/static objects
+- Eg huge files,logs,images,videos etc
+2)Database Storage
+- For storing the data in a organised way so that its easy to query and fetch results
+1)Relational Databases
+2)Non -Relational Databases
+
+
+
