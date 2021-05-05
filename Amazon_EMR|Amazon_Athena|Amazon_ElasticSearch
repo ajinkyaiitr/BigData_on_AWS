@@ -1,0 +1,16 @@
+*BigData analytics refers to the set of functions that can be performed on bigdata to reach to certain analysis.
+*Framework is to analyse bigdata to enable scientist or data modelers to analyse huge volumes of unstructured data easily
+->Why bigdata analytics on cloud?
+1)Infrastructure
+2)Cost
+3)Ease of access
+
+Amazon EMR(Elastic MapReduce)
+*Amazon EMR is a managed cluster platform that simplifies running bigdata frameworks such as Apache Hadoop and Apache Spark on AWS 
+to process and analyse huge volumes of data
+*You can use it to transform and move large set of data into and out of the AWS databases such as AWS S3 and Amazon Dynamo DB
+-->Flow of EMR data transformation
+1)Store the input file
+2)Run the process using cluster
+3)Store the results
+
