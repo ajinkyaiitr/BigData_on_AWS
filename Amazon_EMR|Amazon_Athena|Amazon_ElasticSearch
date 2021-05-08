@@ -14,3 +14,103 @@ to process and analyse huge volumes of data
 2)Run the process using cluster
 3)Store the results
 
+Architecture:
+1)Consists of Master Node,Slave Node Group- Core and Slave Node Group - Task
+2)Master Node will be collaborating the entire work and then submitting to the end user
+3)Task groups are extra requirements which may be additionally required
+4)COre groups works  on the processing of request
+Use Cases:
+#EMR can be used to get cloud benefits as well as on premises
+1)Clickstream Analysis
+2)Realtime Analysis
+3)Log Analysis
+4)ETL
+5)Predictive Analytics
+6)Geonomics
+
+EMR Layers:
+1)Storage Layer-
+#Hadoop Distributed File System-Distributes the data across hadoop clusters and makes sure
+that your data is highly available by creating multiple copies of it
+#Using EMRFS,EMR extends hadoop to add the ability to directly access data stored in Amazon 
+S3 as if it were a file system like HDFS
+#Refers to a locally connected disk.When you create a hadoop cluster,each node is created from an Amazon EC2 instance that comes
+with a preconfigured block of pre-attached disk storage  called an instance store
+2)Cluster Resource Management
+#The resource management layer is responsible for managing cluster resources and scheduling the jobs for processing 
+#Consists of YARN,a component of Apache Hadoop to centrally manage cluster resources for
+multiple data processing frameworks
+#Has an agent on each node that administers YARN components,keeps the cluster healthy
+and communicates with the Amazon EMR service
+3)Data Processing Framework
+#This layer is used to process and analyse the data.Different frameworks are available for
+different kinds of processing needs,such as batch,interactive,in-memory,streaming and so on
+#This impacts the languages and interfaces available from the application layer,which is the layer
+used to interact with the data you want to process
+#The main processing frameworks available for Amazon EMR are Hadoop Mapreduce and Spark
+
+Case Study - EMR
+To calculate the total number of requests per operating system over a specified timeframe
+Pointers:
+1)Creates a Hive table named cloudfront_logs
+2)Reads the cloudfront log files from Amazon S3 using EMRFS and parses the Cloudfront log
+files using the regular expression 
+3)Writes the parsed results to the Hive table cloudfront_logs
+4)Submits a HiveQL query against the data to retreive the total requests per operating system
+5)Writes the query results to your Amazon S3 output bucket
+
+Configure the steps component in Amazon EMR using the below values
+s3://us-west-2.elasticmapreduce.samples/cloudfront/code/Hive_CloudFront.q
+
+s3://us-west-2.elasticmapreduce.samples
+
+Arguments
+-hiveconf 
+hive.support.sql11.reserved.keywords=false
+
+Amazon Athena:
+
+*Amazon Athena is an interactive query service that makes it easy to analyse data in Amazon S3 using standard SQL
+*Athena is serverless,so there is no infrastructure to manage,and you pay only for the queries that you run
+*Simply point to your data in Amazon S3,define the schema and start querying using standard SQL
+
+Features:
+1)Helps to analyse unstructured,semi structured or structured data stored in Amazon S3
+2)You can run adhoc queries using ANSI SQL,without the need to aggregate or load the data into Athena
+3)The metadata in the table tells Athena where the data is located in S3 and specifies the structure of the data.For example:column names,data types and the name of the table
+4)Before querying data,a table must be registered in Athena
+
+Demo - Analyse Sample Dataset using Amazon Athena
+
+Amazon ElasticSearch:
+1)Elastic search is a open source analytics engine
+2)It is a full text engine which is real time with a minimum latency of 1 second for your change to become searchable
+3)Elastic Search being written in Java,is a open source search server
+4)It can connect with any type of data and the underlying database being document type(JSON) non-relational
+5)Elasticsearch service makes it easy to deploy,secure,operate and scale Elasticsearch for log analytics,full text search,application monitoring and more
+6)It is a fully managed service that delivers Elastic search easy to use API and real time analytics capabilities alongside the availability,scalability,and security 
+that production workload requires
+7)Cloud benefits like infra setup,scalability,cost management etc.
+8)The service automatically detects and replaces failed Elasticsearch nodes.reducing the overhead associated with self-managed infrastructure and Elasticsearch software
+9)It provisions all the resources for the domain and manages it
+Features:
+1)Near Realtime
+2)Works with Cluster(collection of computational nodes)
+
+Demo :Setup ElasticSearch Engine and cluster creation
+
+3)Index - Collection of documents
+4)Type - Within one index,there are different types of document like file,movie and product
+5)Mapping - similar to database schema that contains metadata of files
+6)Shards - division of indexes in multiple streams
+7)Replica - Copy of the shard
+
+
+
+
+
+
+
+
+
+
