@@ -1,0 +1,87 @@
+Running a Hadoop MapReduce Job Using
+Custom JAR
+In	this	demo, you will	run	a	sample	Java	program	of	word	count	and	will	
+execute	the	same	using	EMR	cluster
+Solution
+Step 1 – Create a MapReduce Java Program
+You	need	to	first	develop	a	Java	program	to	count	the	occurrence	of	a	word	
+in	any	file.	For	that	you	need	to:
+1. Create	a	java	class	name	Map	and	override	the	map	method.
+public class Map extends Mapper<longwritable, text,="" intwritable="
+"> {
+private final static IntWritable one = new IntWritable(1);
+private Text word = new Text();
+@Override
+public void map(LongWritable key, Text value, Context context)
+ throws IOException, InterruptedException {
+ String line = value.toString();
+ StringTokenizer tokenizer = new StringTokenizer(line);
+ while (tokenizer.hasMoreTokens()) {
+ word.set(tokenizer.nextToken());
+ context.write(word, one);
+ }
+}
+}
+2. Again create	a	class	reduce	like	you	did	above	and	override	the	
+reduce	method.
+public class Reduce extends Reducer<text, intwritable,="" text,="" i
+ntwritable=""> {
+ @Override
+ protected void reduce(Text key, java.lang.Iterable<intwritable> va
+lues,
+ org.apache.hadoop.mapreduce.Reducer<text, intwritable,="" text,=
+"" intwritable="">.Context context)
+ throws IOException, InterruptedException {
+Learnsector
+© LEARNSECTOR
+ int sum = 0;
+ for (IntWritable value : values) {
+ sum += value.get();
+ }
+ context.write(key, new IntWritable(sum));
+ }
+}
+3. Create	a	java	class	named	WordCount	and	defined	the	main	method	
+as	below:
+public static void main(String[] args) throws Exception {
+ Configuration conf = new Configuration();
+ Job job = new Job(conf, "wordcount");
+ job.setJarByClass(WordCount.class);
+ job.setOutputKeyClass(Text.class);
+ job.setOutputValueClass(IntWritable.class);
+ job.setMapperClass(Map.class);
+ job.setReducerClass(Reduce.class);
+ job.setInputFormatClass(TextInputFormat.class);
+ job.setOutputFormatClass(TextOutputFormat.class);
+ FileInputFormat.addInputPath(job, new Path(args[0]));
+ FileOutputFormat.setOutputPath(job, new Path(args[1]));
+ job.waitForCompletion(true);
+}
+4. Export	the	WordCount	program	in	a	jar	and	save	it.	Make	sure	that	
+you	have	provided	the	Main	Class	(WordCount.jar)	as	shown	below:
+Learnsector
+© LEARNSECTOR
+Step 2 – Upload the WordCount JAR and Input Files to Amazon S3
+1. Create	a	S3	bucket	and	give	public	permissions	to	the	bucket.
+2. Upload	the	sample	jar	in	that	bucket	and	for	the	demo	you	can	give	it	
+public	access	(not	recommended	otherwise).
+
+Step 3 – Running an Elastic MapReduce job
+The	next	step	is	to	create	a job	flow.	Follow	the	below	steps	to	achieve	the	
+same:
+1. Sign	in	to	the	AWS	Management	Console	and	navigate	to	EMR	service
+2. In	the	DEFINE	JOB	FLOW	page,	enter	the	following	details,
+3. a)	Job	Flow	Name	=	CountJob
+b)	Select	Run	your	own	applications	,Select	Custom	JAR	in	the	dropdown	list	and	Click	Continue
+4. In	the	SPECIFY	PARAMETERS	page,	enter	values	in	the	boxes	using	
+the	following	table	as	a	guide,	and	then	click	Continue.JAR	Location	=	
+bucketName/jarFileLocationJAR	Arguments	
+=s3n://bucketName/inputFileLocations3n://bucketName/outputpat
+h
+Just	give	a	unique	output	name	as	Hadoop	job	creates	the	same	name	folder	
+in	S3.
+After	executing	the	job,	just	wait	and	monitor	your	job	that	runs	through	
+the	Hadoop	flow.	You	can	also	look	for	errors	by	using	the	Debug	button.	
+The	job	should	be	complete	within	10	to	15	minutes	(can	also	depend	on	
+the	size	of	the	input).	
+Finally,	check	the	output	in	S3	bucket.
