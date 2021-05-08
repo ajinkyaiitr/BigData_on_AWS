@@ -105,6 +105,46 @@ Demo :Setup ElasticSearch Engine and cluster creation
 6)Shards - division of indexes in multiple streams
 7)Replica - Copy of the shard
 
+YELP - Case Study
+
+*Enable an automated review filter to identify suspicious content and minimize exposure to
+the consumer
+*To come up with some features that help people discover new businesses and communicate with each other
+*To enable business owners and managers are able to set up free accounts to post special
+offers,upload photos and message customers
+*The company has also been focussed on developing mobile apps and was recently voted into the
+iTunes Apps Hall of Fame
+
+Challenges:
+1)On-premise cluster maintainence
+2)Cluster set up
+3)Scalability
+4)High time to market
+5)Developer time and effort
+
+AWS Services:
+#Yelp replaced the RAIDs with Amazon S3 and immediately transferred all Hadoop jobs to 
+Amazon Elastic MapReduce
+#It uses Amazon S3 to store daily logs and photos generating around 1.2TB of logs per
+day without worrying about the space
+#High Availability
+#Scalability
+#Pay for what you use
+
+The company uses Amazon EMR to power approximately 20 seperate batch scripts,most og
+those processing the logs
+Features powered by Amazon EMR include:
+1.Review highlights
+2.Auto complete as you type on search
+3.Search spelling suggestions
+4.Top searches
+5.Ads
+
+Benefit:
+Using Amazon EMR yelp was able to save $55000 in upfront hardware costs and get up
+and running in a matter of days not months along with oppurtunity cost
+
+
 
 
 
