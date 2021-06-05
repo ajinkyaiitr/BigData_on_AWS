@@ -1,0 +1,75 @@
+Amazon EC2 Spot Instances with Amazon EMR.
+
+1)Amazon EC2 Spot Instances are spare EC2 capacity available at up to a 90% discount over On-Demand pricing. Amazon EC2 Spot Instances provide acceleration, scale, and deep cost savings to run time-critical, hyper-scale workloads for rapid data analysis.
+
+Increase BigData Application Throughput and save 90% Compute costs:
+
+Amazon EC2 Spot Instances:
+1)ec2 purchase options(On demand,Savings plan,spot instances)
+Spot Instances:
+1)Spot Infrastructure(Same as on demand)
+2)Spot Pricing(Smooth,infrequent changes,no spikes more predictable)
+3)Interruptions(Happens when EC2 needs capacity break)
+4)Diversify(Be flexible across instance types,sizes and availability zones)
+5)Spot is optimized for stateless,fault-tolerant or flexible workloads
+
+Benefits of EMR with Spot instances:
+1)Automation 2)Decouple 3)Integration 4)Current 5)Elastic 6)Low-cost
+
+
+
+Amazon EMR:
+1)Enterprise Grade Hadoop and Spark
+2)Scale compute and storage(s3) independently
+3)Store and process any amount of data
+4)Provision one,hundred,or thousands of nodes
+5)Managed Scaling
+6)EMR monitors your cluster-replacing poorly performing and failed nodes and restarting services
+7)Monitors your cluster using Amazon Cloudwatch
+8)Built in console to view job history and browse logs
+9)EMR has on cluster HDFS for data persistence
+
+
+
+EMR Node Types and Purchase Options:
+Master Nodes
+---Manages the cluster
+---tracks the status of tasks and monitors the health of cluster
+
+Core Nodes
+---The nodes that runs tasks and stores data in the HDFS
+
+Task Nodes
+---The nodes that only run tasks and does not store data in HDFS
+
+EMR Instance Fleets
+1)Method of specifying target capacity as a mix of instance types
+2)EMR will attempt to fulfill capacity from the most suitable pools
+3)Use managed scaling to further fine tune cost and performance
+4)Amazon EMR automatically replaces interuppted or failed instances with one of the instance types you specified
+5)Spark is inherently resilient and applications continue running
+6)The allocation strategy feature is available in EMR.It optimizes the allocation of instance fleet capacity and lets you choose a target strategy for each cluster nodes
+7)On demand instances used lowest price strategy,while Spot instances used capacity price strategy
+
+EMR Managed Scaling:
+1)Completely managed environment for automatically scaling clusters
+2)No configurations required except max-min cost constraints
+3)More data points and faster reaction time
+4)Work with instance fleets
+5)Scaling core nodes on demand and task nodes on spot instances
+Its best to use core nodes on demand and task nodes on spot instances.
+
+Demo: Spark App on Spot Instances with EMR
+
+### Add every single instance to your vpc and use them
+
+
+Sample wordcount program
+
+from pyspark import SparkContext, SparkConf
+conf = SparkConf().setAppName("WordCount")
+sc = SparkContext(conf=conf)
+
+file = sc.textFile("s3://commoncrawl/crawl-data/CC-MAIN-2017-22/segments/1495463607325.40/wet/")
+counts = file.flatMap(lambda line: line.split(" ")).map(lambda word: (word, 1)).reduceByKey(lambda a,b:a + b)
+counts.saveAsTextFile("s3://schmutze-cloud-academy/output/")
